@@ -5,9 +5,9 @@ import { FaPlus } from "react-icons/fa";
 import Modal from "./Modal";
 import { makeGetRequest } from "../utils/apis/makeGetRequest";
 import { backend_url } from "../utils/constants";
+import Loader1 from "../components/Loader1";
 
 const Layout = () => {
-  const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
   const [modal, setModal] = useState(false);
   const [groups, setGroups] = useState(null);
 
@@ -27,7 +27,7 @@ const Layout = () => {
           <h1 className="text-2xl w-max">Pocket Notes</h1>
         </div>
         <div className="flex flex-col justify-center items-center flex-grow">
-          loading
+        <Loader1 color={"black"} size={30} stroke={5} />
         </div>
       </div>
     );
@@ -50,7 +50,7 @@ const Layout = () => {
         <div className="p-4 flex justify-center">
           <h1 className="text-2xl w-max">Pocket Notes</h1>
         </div>
-        <div className="overflow-y-auto flex flex-col">
+        <div className="overflow-y-auto buttons flex flex-col">
           {groups.map((m) => {
             return (
               <NavLink

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import GroupNameCard from "../../components/GroupNameCard";
 import Note from "./components/Note";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { IoSend } from "react-icons/io5";
 import { makeGetRequest } from "../../utils/apis/makeGetRequest";
 import { makePostRequest } from "../../utils/apis/makePostRequest";
 import { backend_url } from "../../utils/constants";
+import Loader1 from "../../components/Loader1";
 
 const index = () => {
   const [text, setText] = useState("");
@@ -14,16 +15,20 @@ const index = () => {
   const [notes, setNotes] = useState(null);
   const [group, setGroup] = useState(null);
   const [buttonLoading, setButtonLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function getNotes(id) {
     const res = await makeGetRequest(`${backend_url}/note/${id}`);
     if (res.success) {
       setNotes(res.data.notes);
       setGroup(res.data.group);
+    } else {
+      navigate("/");
     }
   }
 
   useEffect(() => {
+    setText("");
     getNotes(id);
   }, [id]);
 
@@ -44,7 +49,7 @@ const index = () => {
   if (!notes || !group) {
     return (
       <div className="h-screen flex flex-col justify-center items-center max-sm:absolute max-sm:left-0 max-sm:w-full bg-[#DAE5F5]">
-        loading
+        <Loader1 color={"black"} size={30} stroke={5} />
       </div>
     );
   }
@@ -57,7 +62,7 @@ const index = () => {
         </Link>
         <GroupNameCard name={group.name} dark={true} color={group.color} />
       </div>
-      <div className="flex-grow bg-[#DAE5F5] p-3 overflow-y-auto flex flex-col gap-3">
+      <div className="flex-grow bg-[#DAE5F5] p-3 overflow-y-auto buttons flex flex-col gap-3">
         {notes.map((m) => {
           return <Note note={m} key={m._id} />;
         })}

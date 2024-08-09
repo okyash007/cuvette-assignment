@@ -3,6 +3,7 @@ import { MdDone } from "react-icons/md";
 import { makePostRequest } from "../utils/apis/makePostRequest";
 import { useClickOutSide } from "../utils/hooks/useClickOutside";
 import { backend_url } from "../utils/constants";
+import Loader1 from "../components/Loader1";
 
 const Modal = ({ setGroups, setModal }) => {
   const colors = [
@@ -29,6 +30,7 @@ const Modal = ({ setGroups, setModal }) => {
   async function createGroup() {
     const res = await makePostRequest(`${backend_url}/group`, form);
     setLoading(false);
+    setModal(false);
     if (res.success === true) {
       setGroups((prev) => {
         return [...prev, res.data];
@@ -115,8 +117,8 @@ const Modal = ({ setGroups, setModal }) => {
         </div>
         <div className="text-end max-sm:text-center">
           {loading ? (
-            <button className="bg-blue-900 text-white py-1 px-3 rounded-lg max-sm:w-[80%]">
-              loading
+            <button className="bg-blue-900 text-white py-1 px-3 rounded-lg  max-sm:w-[80%]">
+              <Loader1 color={"white"} size={20} stroke={3} />
             </button>
           ) : (
             <button
