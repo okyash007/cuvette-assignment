@@ -28,6 +28,7 @@ const index = () => {
   }
 
   useEffect(() => {
+    setNotes(null);
     setText("");
     getNotes(id);
   }, [id]);
