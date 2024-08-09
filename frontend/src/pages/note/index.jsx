@@ -6,6 +6,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import { IoSend } from "react-icons/io5";
 import { makeGetRequest } from "../../utils/apis/makeGetRequest";
 import { makePostRequest } from "../../utils/apis/makePostRequest";
+import { backend_url } from "../../utils/constants";
 
 const index = () => {
   const [text, setText] = useState("");
@@ -15,7 +16,7 @@ const index = () => {
   const [buttonLoading, setButtonLoading] = useState(false);
 
   async function getNotes(id) {
-    const res = await makeGetRequest(`http://localhost:3000/note/${id}`);
+    const res = await makeGetRequest(`${backend_url}/note/${id}`);
     if (res.success) {
       setNotes(res.data.notes);
       setGroup(res.data.group);
@@ -27,7 +28,7 @@ const index = () => {
   }, [id]);
 
   async function addNote(text, id) {
-    const res = await makePostRequest("http://localhost:3000/note", {
+    const res = await makePostRequest(`${backend_url}/note`, {
       text,
       group: id,
     });

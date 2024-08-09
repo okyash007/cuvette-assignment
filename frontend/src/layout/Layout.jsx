@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 import Modal from "./Modal";
 import { makeGetRequest } from "../utils/apis/makeGetRequest";
+import { backend_url } from "../utils/constants";
 
 const Layout = () => {
   const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
@@ -11,7 +12,7 @@ const Layout = () => {
   const [groups, setGroups] = useState(null);
 
   async function getGroups() {
-    const res = await makeGetRequest("http://localhost:3000/group");
+    const res = await makeGetRequest(`${backend_url}/group`);
     setGroups(res.data);
   }
 

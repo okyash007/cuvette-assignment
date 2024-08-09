@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { MdDone } from "react-icons/md";
 import { makePostRequest } from "../utils/apis/makePostRequest";
 import { useClickOutSide } from "../utils/hooks/useClickOutside";
+import { backend_url } from "../utils/constants";
 
 const Modal = ({ setGroups, setModal }) => {
   const colors = [
@@ -26,7 +27,7 @@ const Modal = ({ setGroups, setModal }) => {
   const [loading, setLoading] = useState(false);
 
   async function createGroup() {
-    const res = await makePostRequest("http://localhost:3000/group", form);
+    const res = await makePostRequest(`${backend_url}/group`, form);
     setLoading(false);
     if (res.success === true) {
       setGroups((prev) => {
