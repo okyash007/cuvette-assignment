@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import GroupNameCard from "../components/GroupNameCard";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 import Modal from "./Modal";
 import { makeGetRequest } from "../utils/apis/makeGetRequest";
@@ -27,7 +27,7 @@ const Layout = () => {
           <h1 className="text-2xl w-max">Pocket Notes</h1>
         </div>
         <div className="flex flex-col justify-center items-center flex-grow">
-        <Loader1 color={"black"} size={30} stroke={5} />
+          <Loader1 color={"black"} size={30} stroke={5} />
         </div>
       </div>
     );
@@ -48,7 +48,9 @@ const Layout = () => {
         </div>
 
         <div className="p-4 flex justify-center">
-          <h1 className="text-2xl w-max">Pocket Notes</h1>
+          <h1 className="text-2xl w-max">
+            <Link>Pocket Notes</Link>
+          </h1>
         </div>
         <div className="overflow-y-auto buttons flex flex-col">
           {groups.map((m) => {
