@@ -115,14 +115,14 @@ const Modal = ({ setGroups, setModal }) => {
             )}
           </div>
         </div>
-        <div className="text-end max-sm:text-center">
+        <div className="text-end flex justify-end max-sm:justify-center">
           {loading ? (
-            <button className="bg-blue-900 text-white py-1 px-3 rounded-lg  max-sm:w-[80%]">
+            <button className="bg-blue-900 justify-center text-white py-1 px-3 rounded-lg flex w-[40%] max-sm:w-[80%]">
               <Loader1 color={"white"} size={20} stroke={3} />
             </button>
           ) : (
             <button
-              className="bg-blue-900 text-white py-1 px-3 rounded-lg max-sm:w-[80%]"
+              className="bg-blue-900 text-white py-1 w-[40%] px-3 rounded-lg max-sm:w-[80%]"
               onClick={handleClick}
             >
               Create

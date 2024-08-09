@@ -75,7 +75,9 @@ const index = () => {
               <IoSend size={20} color="#0000004a" />
             </button>
           ) : buttonLoading ? (
-            <button>loading</button>
+            <button>
+              <Loader1 color={"black"} size={20} stroke={4}/>
+            </button>
           ) : (
             <button>
               <IoSend
