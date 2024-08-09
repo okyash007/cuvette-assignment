@@ -41,5 +41,5 @@ export const getNotes = asyncHandler(async (req, res, next) => {
   }
 
   const allNotes = await Note.find({ group: req.params.id });
-  return res.json(new apiResponse(200, allNotes));
+  return res.json(new apiResponse(200, { notes: allNotes, group: group }));
 });

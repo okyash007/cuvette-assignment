@@ -1,11 +1,21 @@
 import React from "react";
+import { formatString } from "../utils/helper";
 
-const GroupNameCard = ({ name, color }) => {
+const GroupNameCard = ({ name, color, dark }) => {
   return (
     <div className="flex gap-2 items-center">
-      <div className="bg-blue-600 text-white p-2 rounded-full">MN</div>
+      <div
+        style={{ backgroundColor: color }}
+        className="bg-blue-600 w-10 h-10 text-white flex justify-center items-center rounded-full"
+      >
+        {formatString(name)}
+      </div>
       <div>
-        <h1 className="w-max">my notes</h1>
+        {dark ? (
+          <h1 className="w-max text-white">{name}</h1>
+        ) : (
+          <h1 className="w-max">{name}</h1>
+        )}
       </div>
     </div>
   );

@@ -1,13 +1,15 @@
 import React from "react";
+import { formatTimestamp } from "../../../utils/helper";
 
-const Note = () => {
+const Note = ({ note }) => {
+  const timestamp = formatTimestamp(note.createdAt);
   return (
-    <p className="bg-white rounded-md shadow-lg p-3">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
-      beatae sapiente soluta sed laboriosam error pariatur fugit, assumenda
-      delectus maiores omnis corrupti mollitia similique tempore amet? Quae nisi
-      ex quas.
-    </p>
+    <div className="bg-white rounded-md shadow-lg p-3">
+      <p>{note.text}</p>
+      <p className="text-end text-sm">
+        {timestamp.date + " • " + timestamp.time}
+      </p>
+    </div>
   );
 };
 
